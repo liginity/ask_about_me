@@ -1,0 +1,22 @@
+{% extends "askaboutme/base_generic.html" %}
+
+{% block content %}
+<h1 class="page-heading">Ask About Me</h1>
+<p>Hi, welcome here, where you could ask questions about me!</p>
+<b>NOTE</b>: please be reasonable before asking a question. Questions that are not polite will possibly be removed.</p>
+
+
+{% for question in question_list %}
+<article class="question question-{{ question.pk }}">
+  {{ question.content|safe }}
+  <div>
+    <!-- NOTE the template syntax in the comment is also parsed by Django. -->
+    <p>
+      <time datetime="{{ question.created_time }}">{{ question.created_time }}</time>
+    </p>
+  </div>
+</article>
+{% empty %}
+<div class="no-question">There is no question now.</div>
+{% endfor %}
+{% endblock %}
