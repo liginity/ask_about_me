@@ -8,7 +8,16 @@ class SimpleQuestionAdmin(admin.ModelAdmin):
     fields = [
         "content",
         "created_time",
+        "polite_q",
+        "wont_be_answered_q",
         "public_answer",
+    ]
+    list_display = [
+        "created_time",
+        # "content",
+        "short_content",
+        "polite_q",
+        "wont_be_answered_q",
     ]
 
 
