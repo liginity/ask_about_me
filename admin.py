@@ -18,6 +18,7 @@ class SimpleQuestionAdmin(admin.ModelAdmin):
         "short_content",
         "polite_q",
         "wont_be_answered_q",
+        "short_public_answer",
     ]
 
 
@@ -26,4 +27,8 @@ class PublicAnswerAdmin(admin.ModelAdmin):
     fields = [
         "content",
         "answered_time",
+    ]
+    list_display = [
+        "answered_time",
+        "short_content",
     ]
