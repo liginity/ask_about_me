@@ -2,6 +2,30 @@
 
 {% block content %}
 
+<details>
+  <summary>
+    <strong>Before posting a question</strong>, please read this announcement (click to expand).
+  </summary>
+  <h3>Welcome</h3>
+  <p>First, welcome here, thanks for your time!  ^_^
+    </br>
+    You might want to post questions about me,
+    but please understand the following statements.</p>
+  <h3>Notice</h3>
+  <ul>
+    <li>This website (for asking personal questions) reserve all rights.</li>
+    <li>The questions posted here would be public, while the question posters would remain anonymous.</li>
+    <li>Questions would show up in the main page after I read them and mark them as polite questions.</li>
+  </ul>
+  <h3>Proper questions</h3>
+  <p>If you would like to get a proper answer, please try to follow the requirements below.</p>
+  <p>Basic requirements:</p>
+  <ul>
+    <li>Be polite. Impolite questions probably won't show up.</li>
+    <li>Don't post questions which seems unlikely to be answered. Otherwise, they would remain unanswered.</li>
+  </ul>
+</details>
+
 <p>Ask a question here:</p>
 
 <form action="" method="post">
@@ -13,7 +37,7 @@
   {% endcomment %}
 
 
-  <textarea name="qcontent" cols="40" rows="10" maxlength="700" required="" id="id_qcontent" placeholder="{{ form.qcontent.help_text }}"></textarea>
+  <textarea name="qcontent" cols="40" rows="10" maxlength="700" required="" id="id_qcontent" placeholder="Write a question here."></textarea>
   </br>
   <table>
     <tbody>
@@ -25,6 +49,6 @@
     </tbody>
   </table>
 
-  <input type="submit" value="Submit" />
+  <input type="submit" value="Post" />
 </form>
 {% endblock %}
