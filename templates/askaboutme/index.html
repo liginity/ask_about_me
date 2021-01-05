@@ -23,6 +23,7 @@
   Post a question <a href="{% url 'askaboutme:askq' %}">here</a>.
 </p>
 
+<p>There are {{ polite_question_number }} questions.</p>
 
 {% for question in question_list %}
 <div class="question-and-answer">
