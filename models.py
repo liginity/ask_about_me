@@ -20,5 +20,5 @@ class SimpleQuestion(models.Model):
 class PublicAnswer(models.Model):
     """The Public Answer."""
 
-    answer = models.TextField()
+    content = models.TextField()
     answered_time = models.DateTimeField()

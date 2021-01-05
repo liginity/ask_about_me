@@ -15,6 +15,12 @@
       <time datetime="{{ question.created_time }}">{{ question.created_time }}</time>
     </p>
   </div>
+
+  <div>
+    {% if question.public_answer %}
+    {{ question.public_answer.content }}
+    {% endif %}
+  </div>
 </article>
 {% empty %}
 <div class="no-question">There is no question now.</div>
