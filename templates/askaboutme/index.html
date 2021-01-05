@@ -1,33 +1,47 @@
 {% extends "askaboutme/base_generic.html" %}
 
 {% block content %}
+
+<style>
+  .question-and-answer {
+    /* background-color: #eec; */
+    /* border-color: #eea; */
+    padding-left: 15px;
+    padding-top: 10px;
+    box-shadow: rgba(200, 199, 199, 0.5) 0px 8px 4px 0px;
+    min-height: 160px;
+  }
+
+  body {
+    max-width: 800px;
+  }
+
+</style>
+
 <h1 class="page-heading">Ask About Me</h1>
 <p>Hi, welcome here, where you could ask questions about me!
   Post a question <a href="{% url 'askaboutme:askq' %}">here</a>.
 </p>
-<p>
-  <b>NOTE</b>: please be reasonable before asking a question.
-  Impolite questions will possibly be removed.
-</p>
 
 
 {% for question in question_list %}
-<article class="question question-{{ question.pk }}">
+<div class="question-and-answer">
   <div>
+    <p>(<time>{{ question.created_time|date:'N j' }}</time>)</p>
     {{ question.content|linebreaks }}
     <!-- NOTE the template syntax in the comment is also parsed by Django. -->
-    <p>
-      <time datetime="{{ question.created_time }}">{{ question.created_time|date:'N j' }}</time>
-    </p>
   </div>
 
   <div>
     {% if question.public_answer %}
-    {{ question.public_answer.content }}
+    <details>
+      <summary>Answer:</summary>
+      {{ question.public_answer.content|linebreaks }}
+    </details>
     {% endif %}
   </div>
-</article>
+</div>
 {% empty %}
-<div class="no-question">There is no question now.</div>
+<div class="no-question">There is no question now. You could ask a question <a href="{% url 'askaboutme:askq' %}">here</a>.</div>
 {% endfor %}
 {% endblock %}
