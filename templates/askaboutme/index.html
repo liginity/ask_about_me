@@ -17,7 +17,7 @@
     {{ question.content|safe }}
     <!-- NOTE the template syntax in the comment is also parsed by Django. -->
     <p>
-      <time datetime="{{ question.created_time }}">{{ question.created_time }}</time>
+      <time datetime="{{ question.created_time }}">{{ question.created_time|date:'N j' }}</time>
     </p>
   </div>
 
