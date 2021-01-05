@@ -6,9 +6,25 @@
 
 <form action="" method="post">
   {% csrf_token %}
+  {% comment "it is easier to design the look without using this" %}
   <table>
     {{ form.as_table }}
   </table>
-  <input type="submit" value="Submit"/>
+  {% endcomment %}
+
+
+  <textarea name="qcontent" cols="40" rows="10" maxlength="700" required="" id="id_qcontent" placeholder="{{ form.qcontent.help_text }}"></textarea>
+  </br>
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          {{ form.captcha }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <input type="submit" value="Submit" />
 </form>
 {% endblock %}
