@@ -2,14 +2,19 @@
 
 {% block content %}
 <h1 class="page-heading">Ask About Me</h1>
-<p>Hi, welcome here, where you could ask questions about me!</p>
-<b>NOTE</b>: please be reasonable before asking a question. Questions that are not polite will possibly be removed.</p>
+<p>Hi, welcome here, where you could ask questions about me!
+  Post a question <a href="{% url 'askaboutme:askq' %}">here</a>.
+</p>
+<p>
+  <b>NOTE</b>: please be reasonable before asking a question.
+  Impolite questions will possibly be removed.
+</p>
 
 
 {% for question in question_list %}
 <article class="question question-{{ question.pk }}">
-  {{ question.content|safe }}
   <div>
+    {{ question.content|safe }}
     <!-- NOTE the template syntax in the comment is also parsed by Django. -->
     <p>
       <time datetime="{{ question.created_time }}">{{ question.created_time }}</time>
