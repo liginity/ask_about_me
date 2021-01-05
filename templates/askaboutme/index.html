@@ -14,7 +14,7 @@
 {% for question in question_list %}
 <article class="question question-{{ question.pk }}">
   <div>
-    {{ question.content|safe }}
+    {{ question.content|linebreaks }}
     <!-- NOTE the template syntax in the comment is also parsed by Django. -->
     <p>
       <time datetime="{{ question.created_time }}">{{ question.created_time|date:'N j' }}</time>

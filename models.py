@@ -8,7 +8,7 @@ class SimpleQuestion(models.Model):
     """The Simple Question to ask."""
 
     # qid = models.SmallIntegerField()
-    content = models.CharField(max_length=1000)
+    content = models.TextField(max_length=2500)
     created_time = models.DateTimeField(default=timezone.now)
     polite_q = models.BooleanField(
         default=False, help_text="polite questions would show up."
