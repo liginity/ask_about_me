@@ -14,8 +14,28 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
+from django.views.generic import RedirectView
+from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path("admin/", admin.site.urls),
 ]
+
+urlpatterns += [
+    # redirect to the major app.
+    path("askaboutme/", include("askaboutme.urls")),
+    path("", RedirectView.as_view(url="askaboutme/")),
+]
+
+# for captcha
+urlpatterns += [
+    path("captcha/", include("captcha.urls")),
+]
+
+
+# in development, serve the static files with gunicorn, then the following is required.
+if settings.configured and settings.DEBUG:
+    from django.contrib.staticfiles.urls import staticfiles_urlpatterns  # isort:skip
+
+    urlpatterns += staticfiles_urlpatterns()

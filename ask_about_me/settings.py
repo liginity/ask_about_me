@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
+    "localhost",
     "0.0.0.0",
     "your.domain",
 ]
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "captcha",
+    "askaboutme",
 ]
 
 MIDDLEWARE = [

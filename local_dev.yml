@@ -7,8 +7,9 @@ services:
       dockerfile: compose/local_dev/django/Dockerfile
     container_name: askaboutmeweb
     working_dir: /app
+    user: ${CURRENT_UID}
     volumes:
       - .:/app
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     command: ["gunicorn", "--config", "conf/gunicorn.conf.py", "ask_about_me.wsgi"]
