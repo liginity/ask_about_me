@@ -2,31 +2,52 @@
 
 {% block content %}
 
-<details>
-  <summary>
-    <strong>Before posting a question</strong>, please read this announcement (click to expand).
-  </summary>
-  <h3>Welcome</h3>
-  <p>First, welcome here, thanks for your time!  ^_^
-    <br/>
-    You might want to post questions about me,
-    but please understand the following statements.</p>
-  <h3>Notice</h3>
-  <ul>
-    <li>This website (for asking personal questions) reserve all rights.</li>
-    <li>The questions posted here would be public, while the question posters would remain anonymous.</li>
-    <li>Questions would show up in the main page after I read them and mark them as polite questions.</li>
-  </ul>
-  <h3>Proper questions</h3>
-  <p>If you would like to get a proper answer, please try to follow the requirements below.</p>
-  <p>Basic requirements:</p>
-  <ul>
-    <li>Be polite. Impolite questions probably won't show up.</li>
-    <li>Don't post questions which seems unlikely to be answered. Otherwise, they would remain unanswered.</li>
-  </ul>
-</details>
+<div class="accordion" id="accordionAnnouncement">
+  <div class="card">
+    <div class="card-header" id="">
+      <h5 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          <strong>Before posting a question</strong>, please read this announcement.
+        </button>
+      </h5>
+    </div>
 
-<p>Ask a question here:</p>
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionAnnouncement">
+      <div class="card-body">
+        <h3>Welcome</h3>
+        <p>First, welcome here, thanks for your time! ^_^
+          <br />
+          You might want to post questions about me,
+          but please understand the following statements.</p>
+        <h3>Notice</h3>
+        <ul>
+          <li>This website (for asking personal questions) reserve all rights.</li>
+          <li>The questions posted here would be public, while the question posters would remain anonymous.</li>
+          <li>Questions would show up in the main page after I read them and mark them as polite questions.</li>
+        </ul>
+        <h3>Proper questions</h3>
+        <p>If you would like to get a proper answer, please try to follow the requirements below.</p>
+        <p>Basic requirements:</p>
+        <ul>
+          <li>Be polite. Impolite questions probably won't show up.</li>
+          <li>Don't post questions which seems unlikely to be answered. Otherwise, they would remain unanswered.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <p>Ask a question here:</p> -->
+<!-- <div class="alert alert-info" role="alert">
+     Ask a question here:
+     </div>
+-->
+
+<h3>
+  <div style="margin-top: 20px; margin-bottom: 20px">
+    Ask a question here:
+  </div>
+</h3>
 
 <form action="" method="post">
   {% csrf_token %}
