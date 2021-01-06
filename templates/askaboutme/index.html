@@ -3,14 +3,16 @@
 {% block content %}
 
 <style>
-  .question-and-answer {
-    /* background-color: #eec; */
-    /* border-color: #eea; */
-    padding-left: 15px;
-    padding-top: 10px;
-    box-shadow: rgba(200, 199, 199, 0.5) 0px 8px 4px 0px;
-    min-height: 160px;
-  }
+ .question-and-answer {
+     /* box-shadow: rgba(200, 199, 199, 0.5) 0px 8px 4px 0px; */
+     min-height: 160px;
+     /* border-bottom: unset; */
+ }
+ .question-and-answer-header {
+     /* box-shadow: rgba(200, 199, 199, 0.5) 0px 8px 4px 0px; */
+     border-bottom: unset;
+     padding: 4px 1.25em 4px 1.25em;
+ }
 
 </style>
 
@@ -22,22 +24,23 @@
 <p>There are {{ polite_question_number }} questions.</p>
 
 {% for question in question_list %}
-<div class="question-and-answer">
-  <div>
+<div class="card">
+  <div class="question-and-answer-header card-header">
     <p>(<time>{{ question.created_time|date:'N j' }}</time>)</p>
-    {{ question.content|linebreaks }}
     <!-- NOTE the template syntax in the comment is also parsed by Django. -->
-  </div>
 
-  <div>
-    {% if question.public_answer %}
-    <details>
-      <summary>Answer:</summary>
-      {{ question.public_answer.content|linebreaks }}
-    </details>
-    {% endif %}
   </div>
+  <div class="card-body">
+    {{ question.content|linebreaks }}
+  </div>
+  {% if question.public_answer %}
+  <div class="card-footer">
+    Answer:
+    {{ question.public_answer.content|linebreaks }}
+  </div>
+  {% endif %}
 </div>
+
 {% empty %}
 <div class="no-question">There is no question now. You could ask a question <a href="{% url 'askaboutme:askq' %}">here</a>.</div>
 {% endfor %}
