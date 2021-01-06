@@ -10,6 +10,14 @@
 </head>
 
 <body>
+  <ul class="nav justify-content-end bg-dark">
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'askaboutme:index' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'askaboutme:askq' %}">Ask</a>
+    </li>
+  </ul>
   <main class="container">
     <div class="bg-light">
       {% block content %}{% endblock %}
