@@ -128,3 +128,4 @@ dmypy.json
 # the database directory
 database/
 static/
+secret_key.py

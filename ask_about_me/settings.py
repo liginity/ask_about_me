@@ -21,7 +21,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'pf3pz8q6vj+f&8$=(c=s762iuuq#13hdfto_nh4c8!d5(#3b)='
+# SECRET_KEY = 'pf3pz8q6vj+f&8$=(c=s762iuuq#13hdfto_nh4c8!d5(#3b)='
+## see https://stackoverflow.com/a/4674143/12420848
+try:
+    from .secret_key import SECRET_KEY
+except ImportError:
+
+    def generate_secret_key_file(fname: str):
+        from string import ascii_letters, punctuation
+        from django.utils.crypto import get_random_string
+
+        with open(fname, "w") as fp:
+            fp.write(
+                f'SECRET_KEY = "{get_random_string(100, ascii_letters+punctuation)}"\n'
+            )
+        return
+
+    SETTINGS_DIR = os.path.abspath(os.path.dirname(__file__))
+    generate_secret_key_file(os.path.join(SETTINGS_DIR, "secret_key.py"))
+    from .secret_key import SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
