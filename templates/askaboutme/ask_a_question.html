@@ -37,18 +37,24 @@
   {% endcomment %}
 
 
-  <textarea name="qcontent" cols="40" rows="10" maxlength="700" required="" id="id_qcontent" placeholder="Write a question here."></textarea>
-  <br/>
-  <table>
-    <tbody>
-      <tr>
-        <td>
-          {{ form.captcha }}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <input type="submit" value="Post" />
+  <div class="form-group">
+    <textarea name="qcontent" maxlength="700" required="" id="id_qcontent" placeholder="Write a question here." class="form-control" rows="10"></textarea>
+    <br />
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            {{ form.captcha }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- <input type="submit" value="Post" /> -->
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <button type="submit" class="btn btn-primary">Post</button>
+    </div>
+  </div>
 </form>
 {% endblock %}
