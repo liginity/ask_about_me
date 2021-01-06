@@ -3,19 +3,19 @@
 {% block content %}
 
 <style>
-  .question-and-answer {
+  .qas-question-body {
     /* box-shadow: rgba(200, 199, 199, 0.5) 0px 8px 4px 0px; */
-    min-height: 160px;
+    min-height: 140px;
     /* border-bottom: unset; */
   }
 
-  .question-and-answer-header {
+  .qas-header {
     /* box-shadow: rgba(200, 199, 199, 0.5) 0px 8px 4px 0px; */
     border-bottom: unset;
     padding: 4px 1.25em 4px 1.25em;
   }
 
-  .question-and-answer-footer {
+  .qas-footer {
     border-bottom: unset;
     padding: 4px 1.25em 4px 1.25em;
   }
@@ -30,17 +30,17 @@
 <p>There are {{ polite_question_number }} questions.</p>
 
 {% for question in question_list %}
-<div class="question-and-answer card" id="question-{{ question.pk }}">
-  <div class="question-and-answer-header card-header text-muted">
+<div class="card">
+  <div class="qas-header card-header text-muted">
     (<time>{{ question.created_time|date:'N j' }}</time>)
     <!-- NOTE the template syntax in the comment is also parsed by Django. -->
 
   </div>
-  <div class="card-body">
+  <div class="qas-question-body card-body" id="question-{{ question.pk }}">
     {{ question.content|linebreaks }}
   </div>
   {% if question.public_answer %}
-  <div class="question-and-answer-footer card-footer">
+  <div class="qas-footer card-footer">
     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#answer-{{ question.public_answer.pk }}" aria-expanded="true" aria-controls="answer-{{ question.public_answer.pk }}">
       Answer:
     </button>
